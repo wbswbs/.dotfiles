@@ -15,7 +15,7 @@ export VISUAL=$EDITOR
 export PAGER=less
 # export LESS='-i-P%f (%i/%m) Line %lt/%L' #Better prompt, case-insensitive search by default.
 
-TERM=screen-256color
+TERM=xterm-256color
 
 export ENV=$HOME/.bashrc
 
