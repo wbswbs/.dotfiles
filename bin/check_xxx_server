@@ -1,0 +1,4 @@
+#!/bin/bash
+echo "Test Server auf Verfügbarkeit prüfen"
+ping 123.456.789.0
+exit 0

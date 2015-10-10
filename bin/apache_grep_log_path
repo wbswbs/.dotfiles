@@ -1,0 +1,7 @@
+#!/bin/bash
+echo "Apache Grep the Log Dir from Config"
+#
+# Apache Error Log
+#
+grep -i APACHE_LOG_DIR /etc/apache2/*
+exit 0

@@ -1,0 +1,7 @@
+#!/bin/bash
+echo "Setting Rights on Localhost"
+sudo chgrp www -R /var/www
+echo "Group changed to www on Localhost"
+sudo chmod 775 -R /var/www 
+echo "Chmod changed to 775 on Localhost"
+exit 0

@@ -1,0 +1,186 @@
+#!/bin/bash
+clear
+echo "---------------------------------------------------------------------"
+echo "# Backup WBS "
+echo "---------------------------------------------------------------------"
+#
+# 1. Check if Wechelplatte is available
+#
+wechselplatte="/media/wbs/Seagate Backup Plus Drive"
+[ ! -d $wechselplatte ] && { echo "Wechelplatte nicht gefunden :-("; exit 1; }
+
+echo "$wechselplatte is available !"
+echo ""
+#
+# Function Backup Home bin
+#
+backup_home_bin(){
+  echo "Erstmal das Bin verzeichnis sichern"
+  DATE=$(date +%Y-%m-%d-%H%M%S)
+  cd "/media/wbs/Seagate Backup Plus Drive/backup"
+  BACKUP_DIR="/media/wbs/Seagate Backup Plus Drive/backup"
+  SOURCE="$HOME/bin"
+  echo $BACKUP_DIR
+  echo $SOURCE
+  tar -cjpf home_bin-$DATE.tar.bz2 $SOURCE
+  echo 'Backup erfolgreich'
+}
+#
+# Function Backup Home wbs
+#
+backup_home_wbs(){
+  echo "Erstmal das WBS Home Verzeichnis sichern"
+  DATE=$(date +%Y-%m-%d-%H%M%S)
+  cd "/media/wbs/Seagate Backup Plus Drive/backup"
+  BACKUP_DIR="/media/wbs/Seagate Backup Plus Drive/backup"
+  SOURCE="$HOME"
+  echo $BACKUP_DIR
+  echo $SOURCE
+  tar -cjpf home_wbs-$DATE.tar.bz2 $SOURCE
+  echo 'Backup Home WBS erfolgreich'
+}
+#
+# Function Backup Home all
+#
+backup_home_all(){
+  echo "Erstmal alle Home Verzeichnisse sichern"
+  DATE=$(date +%Y-%m-%d-%H%M%S)
+  cd "/media/wbs/Seagate Backup Plus Drive/backup"
+  BACKUP_DIR="/media/wbs/Seagate Backup Plus Drive/backup"
+  SOURCE="/home"
+  echo $BACKUP_DIR
+  echo $SOURCE
+  tar -cjpf home_all-$DATE.tar.bz2 $SOURCE
+  echo 'Backup Home All erfolgreich'
+}
+#
+# Function Backup Localhost
+#
+backup_localhost(){
+  echo "Localhost sichern"
+  DATE=$(date +%Y-%m-%d-%H%M%S)
+  cd "/media/wbs/Seagate Backup Plus Drive/backup"
+  BACKUP_DIR="/media/wbs/Seagate Backup Plus Drive/backup"
+  SOURCE="/var/www"
+  echo $BACKUP_DIR
+  echo $SOURCE
+  tar -cjpf localhost-$DATE.tar.bz2 $SOURCE
+  echo 'Backup Localhost erfolgreich'
+}
+#
+# Function Backup Localhost
+#
+backup_mysql_data(){
+  echo "MySQL Data sichern"
+  DATE=$(date +%Y-%m-%d-%H%M%S)
+  cd "/media/wbs/Seagate Backup Plus Drive/backup"
+  BACKUP_DIR="/media/wbs/Seagate Backup Plus Drive/backup"
+  SOURCE="/var/lib/mysql"
+  echo $BACKUP_DIR
+  echo $SOURCE
+  sudo tar -cjpf mysql_data-$DATE.tar.bz2 $SOURCE
+  echo 'Backup MySQL Data erfolgreich'
+}
+#
+# Function Backup System Settings
+#
+backup_system_settings(){
+  echo "System Settings sichern"
+  DATE=$(date +%Y-%m-%d-%H%M%S)
+  cd "/media/wbs/Seagate Backup Plus Drive/backup"
+  BACKUP_DIR="/media/wbs/Seagate Backup Plus Drive/backup"
+  SOURCE="/etc"
+  echo $BACKUP_DIR
+  echo $SOURCE
+  sudo tar -cjpf etc-$DATE.tar.bz2 $SOURCE
+  echo 'Backup System Settings erfolgreich'
+}
+
+
+#
+# Select 1
+#
+#echo "Was soll gesichert werden ?"
+#select var in "home_bin" "home_wbs" "home_all" "localhost" "mysql_data" "system_settings"  ; do
+#        break
+#done
+#echo "You have selected $var"
+
+#
+# Select 2
+#
+select var in "home_bin" "home_wbs" "home_all" "localhost" "mysql_data" "system_settings" "nothing" ; do
+  [[ -z $term ]] && casevar=$REPLY || casevar=$term. # or, shorter, casevar=${term:-$REPLY}
+  case $casevar in
+    1|home_bin) backup_home_bin; break ;;
+    2|home_wbs) backup_home_wbs; break ;;
+    3|home_all) backup_home_all; break ;;
+    4|localhost) backup_localhost; break ;;
+    5|mysql_data) backup_mysql_data; break ;;
+    6|system_settings) backup_system_settings; break ;;
+    7|nothing) echo bye; break ;;
+  esac
+done
+
+exit 0;
+
+#
+# Example
+# Check if Filename exists
+#
+#filename="/some/bin/to/path/file"
+#[ ! -f $filename ] && { echo "$Filename not found"; exit 1; }
+
+
+read -p "Name des Projektes:" projekt_name
+echo Projekt: $projekt_name
+if [[ $projekt_name = "" ]]
+then
+  echo '$projekt_name is blank'
+  exit 1
+fi
+#
+# Test Folder / Varaiables
+#
+#cd /var/www/
+#mkdir "${projekt_name}"
+#echo "/var/www/${projekt_name}"
+#exit
+
+#
+# Gehe zu Localhost
+#
+cd /var/www
+pwd
+#
+# Download with subversion
+#
+svn export https://srv7.svn-repos.de/dev675/wbsSuite/wbs_suite/trunk/ $projekt_name
+#
+# Check for sources
+#
+cd /var/www/$projekt_name
+pwd
+#
+# Copy Settings
+#
+projekt_folder="/var/www/${projekt_name}"
+cd $project_folder
+ls -l
+#origin="${project_folder}/data/settings/config_example.php"
+#target="${project_folder}/data/settings/config.php"
+#echo $origin
+#echo $target
+cp data/settings/config_example.php data/settings/config.php
+exit
+
+
+#"cp ${project_folder}/data/settings/config_example.php ${project_folder}/data/settings/config.php"
+#cp "${project_folder}/data/settings/admin_example.php" "${project_folder}/data/settings/admin.php"
+#cp "${project_folder}/data/settings/website_example.php" "${project_folder}/data/settings/website.php"
+#cp "${project_folder}/data/settings/loc_example.inc.php" "${project_folder}/data/settings/loc.inc.php"
+echo "------------------------------------"
+echo "### Success ${projekt_folder}    ###"
+echo "------------------------------------"
+
+exit 0

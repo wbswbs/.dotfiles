@@ -1,0 +1,8 @@
+#!/bin/bash
+echo "GIT Remove in current Folder TODO ASK!!!"
+#
+# 
+#
+find . | grep .git | xargs rm -rf
+#find -name "\.svn" -exec rm -rf {} \;
+exit 0

@@ -1,0 +1,10 @@
+#!/bin/bash
+echo "Replace all the jpg|JPG to gif"
+#
+#
+# cd /var/www/website/www/articles_temp
+shopt -s nocaseglob
+for i in *.jpg
+    do
+    convert *JPG -resize "465x465" -quality "88%" image.jpg	    
+exit 0

@@ -1,0 +1,17 @@
+#!/bin/bash
+# Script zum ändern des Encoding von latin1 auf utf8 in wbs-Projekten
+
+# Anwendung:
+# script ins hauptverzeichnis des Projekts kopieren
+# script ausführbar machen
+# script im terminal ausführen
+
+echo "Encoding wird angepasst"
+pwd;
+find . -name "*.php" -type f -exec iconv -f LATIN1 -t UTF-8 {} -o {} --verbose \;
+find . -name "*.tpl" -type f -exec iconv -f LATIN1 -t UTF-8 {} -o {} --verbose \;
+find . -name "*.js" -type f -exec iconv -f LATIN1 -t UTF-8 {} -o {} --verbose \;
+find . -name "*.txt" -type f -exec iconv -f LATIN1 -t UTF-8 {} -o {} --verbose \;
+find . -name "*.css" -type f -exec iconv -f LATIN1 -t UTF-8 {} -o {} --verbose \;
+echo "Beendet"
+sleep 5

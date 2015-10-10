@@ -1,0 +1,7 @@
+#!/bin/bash
+echo "PHP Example get CWD"
+php_cwd=`/usr/bin/php << 'EOF'
+<?php echo getcwd(); ?>
+EOF`
+echo "$php_cwd" # Or do something else with it
+exit 0

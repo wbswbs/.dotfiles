@@ -1,0 +1,12 @@
+#!/bin/bash
+echo "Replace all the jpg|JPG to gif"
+#
+#
+#cd /var/www/website/www/articles_temp
+shopt -s nocaseglob
+for i in *.jpg
+    do
+    convert "$i" "${i%.*}.gif" 
+done
+
+exit 0

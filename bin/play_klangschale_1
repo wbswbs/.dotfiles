@@ -1,0 +1,5 @@
+#!/bin/bash
+echo "Klangschale 1 abspielen"
+clear
+mpg123 ~/Music/_geräusche/Klangschale_950g_19cm_1209.mp3
+exit 0

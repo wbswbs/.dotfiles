@@ -1,0 +1,7 @@
+#!/bin/bash
+echo "Apache Info"
+#
+# Apache info
+#
+apache2ctl -S
+exit 0

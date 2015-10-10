@@ -1,0 +1,8 @@
+#!/bin/bash
+echo "PHP Documentation for wbsfw_2_0/wbs_shop erstellen"
+#
+# Lets go
+#
+rm -rfv /var/www/_wbs/wbsfw_2_0/documentation/php_doc/wbs_shop
+phpdoc run -d /var/www/_wbs/wbsfw_2_0/module/wbs_shop -t /var/www/_wbs/wbsfw_2_0/documentation/php_doc/wbs_shop
+exit 0

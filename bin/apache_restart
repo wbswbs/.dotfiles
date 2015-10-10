@@ -1,0 +1,7 @@
+#!/bin/bash
+echo "Apache neustarten"
+#
+# Apache neustarten
+#
+sudo /etc/init.d/apache2 restart
+exit 0

@@ -1,0 +1,7 @@
+#!/bin/bash
+echo "Bin"
+#
+# Alle Bash Scripte anzeigen
+#
+ls -l /home/wbs/bin
+exit 0

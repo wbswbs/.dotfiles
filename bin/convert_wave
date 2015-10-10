@@ -1,0 +1,31 @@
+#!/bin/bash
+echo "Wav Dateien in Mp3 umwandeln"
+#
+# WAV umwandeln
+#
+lame -h -b 192 "Track 1.wav" /home/wbs/mp3/Track01.mp3
+lame -h -b 192 "Track 2.wav" /home/wbs/mp3/Track02.mp3
+lame -h -b 192 "Track 3.wav" /home/wbs/mp3/Track03.mp3
+lame -h -b 192 "Track 4.wav" /home/wbs/mp3/Track04.mp3
+lame -h -b 192 "Track 5.wav" /home/wbs/mp3/Track05.mp3
+lame -h -b 192 "Track 6.wav" /home/wbs/mp3/Track06.mp3
+lame -h -b 192 "Track 7.wav" /home/wbs/mp3/Track07.mp3
+lame -h -b 192 "Track 8.wav" /home/wbs/mp3/Track08.mp3
+lame -h -b 192 "Track 9.wav" /home/wbs/mp3/Track09.mp3
+lame -h -b 192 "Track 10.wav" /home/wbs/mp3/Track10.mp3
+lame -h -b 192 "Track 11.wav" /home/wbs/mp3/Track11.mp3
+lame -h -b 192 "Track 12.wav" /home/wbs/mp3/Track12.mp3
+lame -h -b 192 "Track 13.wav" /home/wbs/mp3/Track13.mp3
+lame -h -b 192 "Track 14.wav" /home/wbs/mp3/Track14.mp3
+lame -h -b 192 "Track 15.wav" /home/wbs/mp3/Track15.mp3
+lame -h -b 192 "Track 16.wav" /home/wbs/mp3/Track16.mp3
+lame -h -b 192 "Track 17.wav" /home/wbs/mp3/Track17.mp3
+lame -h -b 192 "Track 18.wav" /home/wbs/mp3/Track18.mp3
+lame -h -b 192 "Track 19.wav" /home/wbs/mp3/Track19.mp3
+lame -h -b 192 "Track 20.wav" /home/wbs/mp3/Track20.mp3
+lame -h -b 192 "Track 21.wav" /home/wbs/mp3/Track21.mp3
+lame -h -b 192 "Track 22.wav" /home/wbs/mp3/Track22.mp3
+lame -h -b 192 "Track 23.wav" /home/wbs/mp3/Track23.mp3
+lame -h -b 192 "Track 24.wav" /home/wbs/mp3/Track24.mp3
+lame -h -b 192 "Track 25.wav" /home/wbs/mp3/Track25.mp3
+exit 0

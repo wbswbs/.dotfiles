@@ -1,0 +1,27 @@
+# $excluded is a regex for paths to exclude from line counting
+excluded="spec\|node_modules\|README\|lib\|docs\|csv\|XLS\|json\|png"
+
+countLines(){
+  # $total is the total lines of code counted
+  total=0
+  # -mindepth exclues the current directory (".")
+  for file in `find . -mindepth 1 -name "*.*" |grep -v "$excluded"`; do
+    # First sed: only count lines of code that are not commented with //
+    # Second sed: don't count blank lines
+    # $numLines is the lines of code
+    numLines=`cat $file | sed '/\/\//d' | sed '/^\s*$/d' | wc -l`
+
+    # To exclude only blank lines and count comment lines, uncomment this:
+    #numLines=`cat $file | sed '/^\s*$/d' | wc -l`
+
+    total=$(($total + $numLines))
+    echo "  " $numLines $file
+  done
+  echo "  " $total in total
+}
+
+echo Source code files:
+countLines
+echo Unit tests:
+cd spec
+countLines

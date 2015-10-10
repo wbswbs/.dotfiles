@@ -1,0 +1,55 @@
+Overview of VIM Commands
+------------------------
+
+See .vimrc
+
+See also
+http://pascalprecht.github.io/2014/03/18/why-i-use-vim/
+
+http://tnerual.eriogerg.free.fr/vimqrc-ge.html
+
+Change Modes
+--------------------------------------- 
+i: Insert Mode
+a: Insert After
+v: Visuell Mode
+o: INsert a New Line after Current
+O: INsert a new Line BEFORE current
+Esc: Normal Mode
+
+Copy/Paste
+----------
+p: Paste after
+P: Paste before
+yy: Copy current Line
+
+dd: Drop the Line
+x: Delete Char
+
+Undo
+-----
+u: Undo
+Ctrl+r: Redo
+
+Move in the Line
+---------------------------------------
+0: Go to the first Column
+^: Go to the first non Blank Character
+$: Go to the last Column
+g_: Go to the last non Blank Character
+
+
+Move in the Document
+---------------------
+H: Go to Top / High
+M: Go to Middle
+G: Go To Bottom
+
+Search
+------
+/Suchbegriff Find the next occurence
+n Find the next occurence
+
+Siehe
+https://hpv.leo.uberspace.de/wordpress/vim-6-suchen-und-ersetzen/
+

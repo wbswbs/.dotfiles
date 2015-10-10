@@ -1,0 +1,5 @@
+#!/bin/bash
+echo "Website Log anzeigen"
+clear
+tail -f /var/www/website/data/wbs.log -n 20
+exit 0
