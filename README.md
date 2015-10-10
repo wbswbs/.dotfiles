@@ -1,6 +1,16 @@
 # My .dotfiles
 
-Instalation
+This is a collection of useful settings for wbs to use on Linux (Ubuntu)-Machines.
+
+It contains
+
+* shortcuts for bash
+* Configuration for vim and 
+* a collection of useful tools and scripts.
+
+This Repository was forked and inspired by mjacobus
+
+Installation
 -------------
 
 ```bash
