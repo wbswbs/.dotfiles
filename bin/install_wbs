@@ -1,0 +1,68 @@
+#!/bin/bash
+clear
+echo "------------------------------------"
+echo "### wbsSuite Installationsscript ###"
+echo "------------------------------------"
+#
+# Projektname
+#
+read -p "Name des Projektes:" projekt_name
+echo Projekt: $projekt_name
+if [[ $projekt_name = "" ]]
+then
+  echo '$projekt_name is blank'
+  exit 1
+fi
+#
+# Test Folder / Varaiables
+#
+#cd /var/www/
+#mkdir "${projekt_name}"
+#echo "/var/www/${projekt_name}"
+#exit
+
+#
+# Gehe zu Localhost
+#
+cd /var/www
+pwd
+#
+# Download with subversion
+#
+svn export https://srv7.svn-repos.de/dev675/wbsSuite/wbs_suite/trunk/ $projekt_name
+#
+# Check for sources
+#
+cd /var/www/$projekt_name
+pwd
+#
+# Select
+#
+echo "What is your favourite CMS?"
+select var in "Contao" "Drupal" "Processwire" "Typo3" "wbsSuite" "WordPress"  ; do
+        break
+done
+echo "You have selected $var"
+#
+# Copy Settings
+#
+projekt_folder="/var/www/${projekt_name}"
+cd $project_folder
+ls -l
+#origin="${project_folder}/data/settings/config_example.php"
+#target="${project_folder}/data/settings/config.php"
+#echo $origin
+#echo $target
+cp data/settings/config_example.php data/settings/config.php
+exit
+
+
+#"cp ${project_folder}/data/settings/config_example.php ${project_folder}/data/settings/config.php"
+#cp "${project_folder}/data/settings/admin_example.php" "${project_folder}/data/settings/admin.php"
+#cp "${project_folder}/data/settings/website_example.php" "${project_folder}/data/settings/website.php"
+#cp "${project_folder}/data/settings/loc_example.inc.php" "${project_folder}/data/settings/loc.inc.php"
+echo "------------------------------------"
+echo "### Success ${projekt_folder}    ###"
+echo "------------------------------------"
+
+exit 0
